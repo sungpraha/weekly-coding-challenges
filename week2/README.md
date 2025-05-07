@@ -60,3 +60,86 @@ def reverseVowels(s: str) -> str:
         left += 1
         right -= 1
     return ''.join(s_list)
+
+-----
+
+## Problem 2: Top N Most Frequent Words from "The Great Gatsby" Excerpt
+
+**Date Added:** May 7, 2025
+
+### Problem Description
+
+The goal is to write a Python program that reads the content of `great_gatsby.txt`, processes the text to identify word frequencies, and then outputs the **N** most common words.
+
+**Key text processing requirements include:**
+* Case-insensitivity: "The" and "the" should be counted as the same word.
+* Hyphenation: Hyphenated terms like "well-being" must be treated as two separate words: "well" and "being".
+* Punctuation: Standard punctuation marks (periods, commas, quotes, etc.) should be removed and not interfere with word identification.
+
+### Input Files
+
+1.  `great_gatsby.txt`: The text file containing the first ~150 lines of "The Great Gatsby". This file should be placed in the `week2` directory.
+2.  `N`: An integer specifying how many of the most frequent words to display (e.g., N=10).
+
+### Example Output
+
+Top 10 most frequent words from '/Users/sungha/Documents/coding/weekly-coding-challenges/week2/great_gatsby.txt':
+
+the: 100
+a: 72
+and: 60
+of: 58
+i: 54
+in: 40
+that: 36
+to: 35
+was: 34
+my: 22
+
+### Solution Approach
+
+The Python script (`gatsby_top_words.py`) implements the following logic:
+1.  **Read File:** Opens and reads the content from the specified filepath (`great_gatsby.txt`), ensuring `utf-8` encoding. Includes basic error handling for `FileNotFoundError`.
+2.  **Normalize Text (Lowercase):** Converts the entire text content to lowercase to handle case-insensitivity.
+3.  **Handle Hyphens:** Replaces all hyphen characters (`-`) with spaces (` `). This is done *before* general punctuation removal to ensure terms like "well-being" become "well being" and are then split into two distinct words.
+4.  **Remove Punctuation:** Uses `str.maketrans()` and `text.translate()` with `string.punctuation` to remove all other standard punctuation marks.
+5.  **Tokenize (Split Words):** Splits the cleaned text into a list of individual words using whitespace as the delimiter. Any resulting empty strings from the list of words are filtered out.
+6.  **Count Frequencies:** Employs `collections.Counter` to efficiently count the occurrences of each word in the tokenized list.
+7.  **Extract Top N:** Uses the `.most_common(N)` method of the `Counter` object to get the N words with the highest frequencies, already sorted in descending order of frequency.
+8.  **Display Results:** Prints the top N words and their counts in a formatted manner.
+
+### Code Snippet
+
+*(The core logic from `gatsby_top_words.py`)*
+```python
+import string
+from collections import Counter
+import os # Optional: for more robust file path handling
+
+def get_top_n_words(filepath: str, n: int) -> list:
+    try:
+        with open(filepath, 'r', encoding='utf-8') as file:
+            text = file.read()
+    except FileNotFoundError:
+        # (Error handling)
+        return []
+    # ... (other error handling)
+
+    text = text.lower()
+    text = text.replace('-', ' ') # Handle hyphens as word separators
+    translator = str.maketrans('', '', string.punctuation)
+    text = text.translate(translator)
+    words = text.split()
+    words = [word for word in words if word] # Filter empty strings
+
+    if not words:
+        return []
+    word_counts = Counter(words)
+    top_n = word_counts.most_common(n)
+    return top_n
+    
+Insights & Learnings
+The order of text processing operations is crucial (e.g., handling hyphens before general punctuation removal based on string.punctuation).
+collections.Counter is an extremely convenient and efficient tool for frequency counting tasks.
+Initial word frequency outputs often highlight the prevalence of "stop words" (common articles, prepositions, etc.), suggesting a common next step in text analysis is stop word filtering to find more thematically relevant terms.
+Robust file path handling (e.g., using os.path.join and os.path.dirname(__file__)) makes scripts more portable.
