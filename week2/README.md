@@ -61,7 +61,7 @@ def reverseVowels(s: str) -> str:
         right -= 1
     return ''.join(s_list)
 
------
+```
 
 ## Problem 2: Top N Most Frequent Words from "The Great Gatsby" Excerpt
 
@@ -137,7 +137,7 @@ def get_top_n_words(filepath: str, n: int) -> list:
     word_counts = Counter(words)
     top_n = word_counts.most_common(n)
     return top_n
-    
+```
 Insights & Learnings
 The order of text processing operations is crucial (e.g., handling hyphens before general punctuation removal based on string.punctuation).
 collections.Counter is an extremely convenient and efficient tool for frequency counting tasks.
