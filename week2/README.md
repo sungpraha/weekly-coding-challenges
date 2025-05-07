@@ -138,8 +138,9 @@ def get_top_n_words(filepath: str, n: int) -> list:
     top_n = word_counts.most_common(n)
     return top_n
 ```
-Insights & Learnings
-The order of text processing operations is crucial (e.g., handling hyphens before general punctuation removal based on string.punctuation).
-collections.Counter is an extremely convenient and efficient tool for frequency counting tasks.
-Initial word frequency outputs often highlight the prevalence of "stop words" (common articles, prepositions, etc.), suggesting a common next step in text analysis is stop word filtering to find more thematically relevant terms.
-Robust file path handling (e.g., using os.path.join and os.path.dirname(__file__)) makes scripts more portable.
+### Insights & Learnings
+
+* The order of text processing operations is crucial (e.g., handling hyphens *before* general punctuation removal based on `string.punctuation`).
+* `collections.Counter` is an extremely convenient and efficient tool for frequency counting tasks.
+* Initial word frequency outputs often highlight the prevalence of "stop words" (common articles, prepositions, etc.), suggesting a common next step in text analysis is stop word filtering to find more thematically relevant terms.
+* Robust file path handling (e.g., using `os.path.join` and `os.path.dirname(__file__)`) makes scripts more portable.
