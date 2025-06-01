@@ -1,4 +1,4 @@
-# week4/todo_app.py
+# week4/todo-app.py
 
 tasks = []  # This list will store our tasks (as dictionaries)
 
