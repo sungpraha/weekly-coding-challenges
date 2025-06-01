@@ -17,11 +17,15 @@ Each week's challenge resides in its own dedicated folder, named `weekN`. Inside
 
 Here is a log of the challenges completed so far:
 
-| Week | Challenge Title              | Folder Link                 |
-|------|------------------------------|-----------------------------|
-| 1    | Two Sum                      | [View Week 1](./week1/)     |
-| 2    | Reverse Vowels in a String   | [View Week 2](./week2/)     |
-|      | *(Add new rows as you go)* |                             |
+| Week | Challenge Title                       | File(s) / Folder Link       |
+| :--- | :------------------------------------ | :-------------------------- |
+| 1    | Two Sum                               | [View Week 1](./week1/)       |
+| 2    | Reverse Vowels in a String            | [View Week 2](./week2/)       |
+| 2    | Top N Frequent Words (Gatsby)         | [View Week 2](./week2/)       |
+| 3    | Prime Number Checker                  | [View Week 3](./week3/prime_checker.py) |
+| 3    | Palindrome Checker                    | [View Week 3](./week3/palindrome_checker.py) |
+| 4    | Simple To-Do List App                 | [View Week 4](./week4/todo-app.py) |
+| 5    | Filter Even Numbers                   | [View Week 5](./week5/even_filter.py) |
 
 ---
 
